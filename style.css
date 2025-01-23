@@ -1,0 +1,109 @@
+:root {
+  --primary-color: #3498db; /* Replace with your primary color */
+  --secondary-color: #2ecc71; /* Replace with your secondary color */
+  --accent-color: #e74c3c; /* Replace with your accent color */
+  --background-color: #f4f4f4; /* Replace with your background color */
+  --text-color: #333; /* Replace with your text color */
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16pt;
+  color: var(--text-color);
+}
+
+body{
+  min-height: 100vh;
+  padding: 10px;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+h1 {
+  margin-top: 100px; /* Top margin */
+  margin-bottom: 20px; /* Bottom margin */
+  font-size: 3rem; 
+  font-weight: 800; /* Bold font */
+  text-transform: uppercase; /* Makes text uppercase */
+  text-align: center; /* Center-align the text */
+  color: var(--accent-color); /* Primary color */
+
+}
+ 
+
+.wrapper {
+width: 90%;
+max-width: 600px;
+background: #fff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+padding: 20px;
+text-align: center;
+}
+
+h1 {
+font-size: 2.5rem; /* Default size for desktops */
+font-weight: 700; /* Bold font */
+color: var(--accent-color);
+text-transform: uppercase; /* Makes text uppercase */
+text-align: center;
+margin-top: 10px;
+margin-bottom: 20px;
+}
+
+#todo-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: inherit; /* Inherit the font from the parent */
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 1000px;
+  background: none; /* No background */
+  color: #333;
+  caret-color: var(--accent-color); /* Custom caret color */
+  box-sizing: border-box;
+}
+
+/* ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+ul li {
+background: var(--secondary-color);
+color: #fff;
+padding: 10px;
+margin: 10px 0;
+border-radius: 4px;
+text-align: left;
+font-size: 1.2rem;
+}
+
+input[type="text"] {
+width: 80%;
+padding: 10px;
+margin: 15px 0;
+border: 1px solid var(--primary-color);
+border-radius: 4px;
+font-size: 1rem;
+}
+
+button {
+padding: 10px 20px;
+background: var(--primary-color);
+color: #fff;
+border: none;
+border-radius: 4px;
+font-size: 1rem;
+cursor: pointer;
+transition: background 0.3s ease;
+} */
