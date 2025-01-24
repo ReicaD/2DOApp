@@ -140,6 +140,12 @@ input[type="checkbox"]:checked ~ .todo-text {
    color:var(--secondary-color)
 }
 
+/* hiding the original checkbox */
+
+input[type="checkbox"]{
+  display: none;
+}
+
 
 
 
