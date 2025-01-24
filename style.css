@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #3498db; /* Replace with your primary color */
+  --primary-color: #4c5a63; /* Replace with your primary color */
   --secondary-color: #2ecc71; /* Replace with your secondary color */
-  --accent-color: #e74c3c; /* Replace with your accent color */
-  --background-color: #f4f4f4; /* Replace with your background color */
+  --accent-color: #e8e804; /* Replace with your accent color */
+  --background-color: #0e1237; /* Replace with your background color */
   --text-color: #333; /* Replace with your text color */
 }
 *{
@@ -41,21 +41,11 @@ h1 {
 .wrapper {
 width: 90%;
 max-width: 600px;
-background: #fff;
+background: #0e1237;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 border-radius: 8px;
 padding: 20px;
 text-align: center;
-}
-
-h1 {
-font-size: 2.5rem; /* Default size for desktops */
-font-weight: 700; /* Bold font */
-color: var(--accent-color);
-text-transform: uppercase; /* Makes text uppercase */
-text-align: center;
-margin-top: 10px;
-margin-bottom: 20px;
 }
 
 #todo-input {
@@ -64,46 +54,99 @@ margin-bottom: 20px;
   margin: 10px 0;
   font-family: inherit; /* Inherit the font from the parent */
   font-size: 1rem;
-  border: 2px solid #ccc;
+  border: 2px solid var(--secondary-color);
   border-radius: 1000px;
-  background: none; /* No background */
+  background:  #0e1237; /* No background */
   color: #333;
   caret-color: var(--accent-color); /* Custom caret color */
   box-sizing: border-box;
 }
 
-/* ul {
-list-style: none;
-padding: 0;
-margin: 0;
+#todo-input:focus{
+  outline: none;
+}
+form{
+  position:relative;
+}
+#add-button{
+  position: absolute;
+  top:0;
+  right: 0;
+
+  background-color: var(--accent-color);
+  height: 100%;
+  padding: 0 30px;
+  border: none;
+  border-radius: 1000px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--background);
+  cursor: pointer;
+
 }
 
-ul li {
-background: var(--secondary-color);
-color: #fff;
-padding: 10px;
-margin: 10px 0;
-border-radius: 4px;
-text-align: left;
-font-size: 1.2rem;
+.todo{
+  margin: 10px;
+  padding: 0 16px;
+  background-color: var(--primary-color); 
+  border-radius:15px;
+  display: flex;
+  align-items: center;
+
 }
 
-input[type="text"] {
-width: 80%;
-padding: 10px;
-margin: 15px 0;
-border: 1px solid var(--primary-color);
-border-radius: 4px;
-font-size: 1rem;
+.todo .todo-text {
+  padding: 15px;
+  padding-right: 0;
+  flex-grow: 1;
+
 }
 
-button {
-padding: 10px 20px;
-background: var(--primary-color);
-color: #fff;
-border: none;
-border-radius: 4px;
-font-size: 1rem;
-cursor: pointer;
-transition: background 0.3s ease;
-} */
+.delete-button{
+  padding: 3px;
+  background: var(--secondary-color);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.delete-button:hover svg{
+  transition: red;
+}
+.custom-checkbox {
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  min-height: 20px;
+  min-width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+  cursor: pointer; /* Optional for clickable styling */
+}
+/* adds the checkmark color and sychcs it  to the button*/
+input[type="checkbox"]:checked ~ .custom-checkbox{
+  background-color: var(--accent-color);
+}
+
+input[type="checkbox"]:checked ~ .custom-checkbox svg{
+  fill: var(--primary-color);
+}
+
+input[type="checkbox"]:checked ~ .todo-text {
+   text-decoration: line-through;
+   color:var(--secondary-color)
+}
+
+
+
+
+
+
+
+
+
+
+ 
