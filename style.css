@@ -59,6 +59,7 @@ h1 {
 }
 
 #todo-input:focus {
+  color: aliceblue;
   outline: none;
 }
 form {
@@ -91,6 +92,7 @@ form {
 
 .todo .todo-text {
   padding: 15px;
+  background-color: white;
   padding-right: 0;
   flex-grow: 1;
   transition: 200ms ease;
