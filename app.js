@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault(); // Prevent the default form submission
         alert("test");
     });
+
+    function addTodo(){
+        const todoText = todoInput.ariaValueMax.trim();
+        allTodos.push(todoText)
+        console.log(allTodos);
+
+    }
 });
 
 
