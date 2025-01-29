@@ -11,10 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function addTodo(){
-        const todoText = todoInput.value.trim(); 
-        allTodos.push(todoText)
-        alert(todoText);
-        // console.log(allTodos);
+        const todoText = todoInput.value.trim();
+        //to present user from submiting an empy todo
+        if (todoText.length > 0){
+
+            allTodos.push(todoText);
+            valueInput.value = "";
+        }
+        // alert(todoText);
+        //  console.log(allTodos);
     }
 })
 
