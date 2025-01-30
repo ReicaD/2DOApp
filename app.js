@@ -15,20 +15,25 @@ document.addEventListener("DOMContentLoaded", function () {
     //to present user from submiting an empy todo
     if (todoText.length > 0) {
       allTodos.push(todoText);
+      updateTodoList();
       todoInput.value = "";
     }
     // alert(todoText);
     //  console.log(allTodos);
   }
   //updating the submited value of the todo list
-  function updateTodoList(){
-      todoListUL.innerHTML = "";
+  function updateTodoList((todo, todoIndex)=>{
+    todoListUL.innerHTML = "";
+    allTodos.forEach(()=>{
+    let todoItem = createTodoItem(todo, todoIndex);
+    todoListUL.append(todoItem);
+    })
+
   }
-  function createTodoItem(todo){
-      const todoLI = document.createElement("li");
-      todoLI.innerText = todo;
-      todoListUL.append(todoLI);
+  function createTodoItem(todo) {
+    const todoLI = document.createElement("li");
+    todoLI.innerText = todo;
+    // todoListUL.append(todoLI);
+    return todoLI;
   }
 });
-
- 
