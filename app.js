@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     function createTodoItem(todo, todoIndex) {
       const todoLI = document.createElement("li");
-      todoLI.innerText = `${todo} (Task #${todoIndex + 1})`; // Example usage of todoIndex
+      todoLI.className ="todo";
       return todoLI;
     }
   });
