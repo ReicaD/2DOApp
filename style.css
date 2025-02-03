@@ -92,7 +92,7 @@ form {
 
 .todo .todo-text {
   padding: 15px;
-  
+  color:rgb(233, 231, 150);
   padding-right: 0;
   flex-grow: 1;
   transition: 200ms ease;

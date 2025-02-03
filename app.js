@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (todoText.length > 0) {
         allTodos.push(todoText);
         updateTodoList();
+        saveTodos();
         todoInput.value = "";
       }
     }
@@ -67,6 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
       
       `
       return todoLI;
+
+      //setting local storage
+    } function saveTodos(){
+        const todoJson = JSON.stringify(allTodos)
+        localStorage.setItem("todos", todoJson)
     }
+    saveTodos()
+
   });
   
