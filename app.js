@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     function createTodoItem(todo, todoIndex) {
-        todoId = "todo-" +todoIndex;
+       const todoId = "todo-" +todoIndex;
       const todoLI = document.createElement("li");
       todoLI.className ="todo";
       todoLI.innerHTML = `
