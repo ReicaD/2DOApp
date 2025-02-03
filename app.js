@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const todoInput = document.getElementById("todo-input");
     const todoListUL = document.getElementById("todo-list");
   
-    let allTodos = [];
+    let allTodos = getTodos();
+    //to get to dodo back on the page
+        updateTodoList()
   
     // This is for the submit event
     todoForm.addEventListener("submit", function (e) {
@@ -67,14 +69,30 @@ document.addEventListener("DOMContentLoaded", function () {
           </button>
       
       `
+       const deleteButton = todoLI.querySelector("delete-button");
+       //this deletes the todo Button
+        deleteButton.addEventListener("click", ()=>{
+            deleteTodoItem(todoIndex);
+        })
+
       return todoLI;
 
+      
+      function deleteTodoItem(todoIndex){
+          allTodos = allTodos.filter((_, i)=> i !== todoIndex);
+          saveTodos();
+          updateTodoList();
+      }
       //setting local storage
     } function saveTodos(){
         const todoJson = JSON.stringify(allTodos)
         localStorage.setItem("todos", todoJson)
     }
-    saveTodos()
+    // saveTodos()
+  function getTodos(){
+      const todos = localStorage.getItem("todos") || "[]";
+      return JSON.parse(todos);
+  }
 
   });
   
