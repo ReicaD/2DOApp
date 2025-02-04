@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
        allTodos[todoIndex].completed = checkbox.checked;
        saveTodos();
     })
+    checkbox.checked = todo.completed;
 
     console.log(deleteButton);
     return todoLI;

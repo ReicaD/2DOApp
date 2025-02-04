@@ -18,7 +18,7 @@ html {
 body {
   min-height: 100vh;
   padding: 10px;
-  background-color:#0e1237;
+  background-color: #0e1237;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +92,7 @@ form {
 
 .todo .todo-text {
   padding: 15px;
-  color:rgb(233, 231, 150);
+  color: rgb(233, 231, 150);
   padding-right: 0;
   flex-grow: 1;
   transition: 200ms ease;
@@ -109,7 +109,7 @@ form {
 }
 
 .delete-button:hover svg {
-  transition:#eb1f10
+  transition: #eb1f10;
 }
 .custom-checkbox {
   border: 2px solid var(--accent-color);
