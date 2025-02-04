@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const todoText = todoInput.value.trim();
     // Prevent user from submitting an empty todo
     if (todoText.length > 0) {
+      const todoObject = {
+        text: todoText,
+        completed: false,
+      };
+
       allTodos.push(todoText);
       updateTodoList();
       saveTodos();
@@ -67,12 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
           </button>
       
       `;
-      const deleteButton = todoLI.querySelector(".delete-button");
-      //this deletes the todo Button
+    const deleteButton = todoLI.querySelector(".delete-button");
+    //this deletes the todo Button
     deleteButton.addEventListener("click", () => {
       deleteTodoItem(todoIndex);
     });
-     console.log(deleteButton);
+    console.log(deleteButton);
     return todoLI;
 
     function deleteTodoItem(todoIndex) {
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       saveTodos();
       updateTodoList();
     }
-     //setting local storage
+    //setting local storage
   }
   function saveTodos() {
     const todoJson = JSON.stringify(allTodos);
@@ -92,6 +97,5 @@ document.addEventListener("DOMContentLoaded", function () {
     return JSON.parse(todos);
   }
 
-//   console.log(deleteItem);
-
+  //   console.log(deleteItem);
 });
