@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //to get to dodo back on the page // This is for the submit event
   updateTodoList();
   todoForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent the default form submission
+      // Prevent the default form submission
+    e.preventDefault(); 
     addTodo();
   });
 
@@ -28,10 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Updating the submitted value of the todo list
+  // Pass both parameters
   function updateTodoList() {
     todoListUL.innerHTML = "";
     allTodos.forEach((todo, todoIndex) => {
-      let todoItem = createTodoItem(todo, todoIndex); // Pass both parameters
+      let todoItem = createTodoItem(todo, todoIndex); 
       todoListUL.append(todoItem);
     });
   }
@@ -105,5 +107,4 @@ document.addEventListener("DOMContentLoaded", function () {
     return JSON.parse(todos);
   }
 
-  //   console.log(deleteItem);
 });
