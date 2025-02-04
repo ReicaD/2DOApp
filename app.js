@@ -1,43 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const todoForm = document.querySelector("form");
-    const todoInput = document.getElementById("todo-input");
-    const todoListUL = document.getElementById("todo-list");
-  
-    let allTodos = getTodos();
-    //to get to dodo back on the page
-        updateTodoList()
-  
-    // This is for the submit event
-    todoForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // Prevent the default form submission
-      addTodo();
+  const todoForm = document.querySelector("form");
+  const todoInput = document.getElementById("todo-input");
+  const todoListUL = document.getElementById("todo-list");
+
+  let allTodos = getTodos();
+  //to get to dodo back on the page // This is for the submit event
+  updateTodoList();
+  todoForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    addTodo();
+  });
+
+  function addTodo() {
+    const todoText = todoInput.value.trim();
+    // Prevent user from submitting an empty todo
+    if (todoText.length > 0) {
+      allTodos.push(todoText);
+      updateTodoList();
+      saveTodos();
+      todoInput.value = "";
+    }
+  }
+
+  // Updating the submitted value of the todo list
+  function updateTodoList() {
+    todoListUL.innerHTML = "";
+    allTodos.forEach((todo, todoIndex) => {
+      let todoItem = createTodoItem(todo, todoIndex); // Pass both parameters
+      todoListUL.append(todoItem);
     });
-  
-    function addTodo() {
-      const todoText = todoInput.value.trim();
-      // Prevent user from submitting an empty todo
-      if (todoText.length > 0) {
-        allTodos.push(todoText);
-        updateTodoList();
-        saveTodos();
-        todoInput.value = "";
-      }
-    }
-  
-    // Updating the submitted value of the todo list
-    function updateTodoList() {
-      todoListUL.innerHTML = "";
-      allTodos.forEach((todo, todoIndex) => {
-        let todoItem = createTodoItem(todo, todoIndex); // Pass both parameters
-        todoListUL.append(todoItem);
-      });
-    }
-  
-    function createTodoItem(todo, todoIndex) {
-       const todoId = "todo-" +todoIndex;
-      const todoLI = document.createElement("li");
-      todoLI.className ="todo";
-      todoLI.innerHTML = `
+  }
+
+  function createTodoItem(todo, todoIndex) {
+    const todoId = "todo-" + todoIndex;
+    const todoLI = document.createElement("li");
+    todoLI.className = "todo";
+    todoLI.innerHTML = `
       <!-- checking the to do and save -->
           <input type="checkbox" id="${todoId}" >
           <label class="custom-checkbox" for="${todoId}">
@@ -68,31 +66,32 @@ document.addEventListener("DOMContentLoaded", function () {
             </svg>
           </button>
       
-      `
-       const deleteButton = todoLI.querySelector("delete-button");
-       //this deletes the todo Button
-        deleteButton.addEventListener("click", ()=>{
-            deleteTodoItem(todoIndex);
-        })
+      `;
+      const deleteButton = todoLI.querySelector(".delete-button");
+      //this deletes the todo Button
+    deleteButton.addEventListener("click", () => {
+      deleteTodoItem(todoIndex);
+    });
+     console.log(deleteButton);
+    return todoLI;
 
-      return todoLI;
-
-      
-      function deleteTodoItem(todoIndex){
-          allTodos = allTodos.filter((_, i)=> i !== todoIndex);
-          saveTodos();
-          updateTodoList();
-      }
-      //setting local storage
-    } function saveTodos(){
-        const todoJson = JSON.stringify(allTodos)
-        localStorage.setItem("todos", todoJson)
+    function deleteTodoItem(todoIndex) {
+      allTodos = allTodos.filter((_, i) => i !== todoIndex);
+      saveTodos();
+      updateTodoList();
     }
-    // saveTodos()
-  function getTodos(){
-      const todos = localStorage.getItem("todos") || "[]";
-      return JSON.parse(todos);
+     //setting local storage
+  }
+  function saveTodos() {
+    const todoJson = JSON.stringify(allTodos);
+    localStorage.setItem("todos", todoJson);
+  }
+  // saveTodos()
+  function getTodos() {
+    const todos = localStorage.getItem("todos") || "[]";
+    return JSON.parse(todos);
   }
 
-  });
-  
+//   console.log(deleteItem);
+
+});
