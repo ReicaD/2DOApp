@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         completed: false,
       };
 
-      allTodos.push(todoText);
+      allTodos.push(todoObject);
       updateTodoList();
       saveTodos();
       todoInput.value = "";
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createTodoItem(todo, todoIndex) {
     const todoId = "todo-" + todoIndex;
     const todoLI = document.createElement("li");
+    const todoText = todo.text;
     todoLI.className = "todo";
     todoLI.innerHTML = `
       <!-- checking the to do and save -->
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </svg>
           </label>
           <label for="${todoId}" class="todo-text">
-           ${todo}
+           ${todoText}
           </label>
           <button class="delete-button">
             <svg fill="var(--secondary)"
@@ -76,7 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
     //this deletes the todo Button
     deleteButton.addEventListener("click", () => {
       deleteTodoItem(todoIndex);
-    });
+    })
+   const checkbox =todoLI.querySelector("input");
+    checkbox.addEventListener("change", ()=>{
+       allTodos[todoIndex].completed = checkbox.checked;
+       saveTodos();
+    })
+
     console.log(deleteButton);
     return todoLI;
 
