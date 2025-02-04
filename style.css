@@ -100,7 +100,7 @@ form {
 
 .delete-button {
   padding: 3px;
-  background: var(--secondary-color);
+  background: transparent;
   border: none;
   display: flex;
   justify-content: center;
@@ -108,8 +108,13 @@ form {
   cursor: pointer;
 }
 
+.delete-button svg {
+  fill: rgb(4, 245, 32); /* initial color */
+  transition: fill 0.3s ease; /* animate the 'fill' property over 0.3 seconds */
+}
+
 .delete-button:hover svg {
-  transition: #eb1f10;
+  fill: #eb1f10; /* new color on hover */
 }
 .custom-checkbox {
   border: 2px solid var(--accent-color);
