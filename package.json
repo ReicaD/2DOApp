@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npx servor . index.html 8000 --browse",
     "dev": "npx servor . index.html 8000 --browse"
+
   },
   "keywords": [],
   "author": "",
