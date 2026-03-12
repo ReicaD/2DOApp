@@ -48,15 +48,27 @@
               </label>
             </div>
             <div class="form-control mt-6">
-              <button class="btn btn-accent rounded-full">Login</button>
+              <button id="login-btn" class="btn btn-accent rounded-full">Login</button>
             </div>
             <div class="divider">OR</div>
             <div class="form-control">
-              <button class="btn btn-outline btn-accent rounded-full">Create Account</button>
+              <button id="signup-btn" class="btn btn-outline btn-accent rounded-full">Create Account</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      document.getElementById('login-btn').addEventListener('click', () => {
+        alert('Logging in... (Supabase integration coming next!)');
+        window.location.href = 'index.html';
+      });
+      document.getElementById('signup-btn').addEventListener('click', () => {
+        alert('Creating account... (Supabase integration coming next!)');
+        window.location.href = 'index.html';
+      });
+    </script>
 </body>
 </html>
+
