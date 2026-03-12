@@ -13,52 +13,61 @@
     <script src="app.js" defer></script> 
 </head>
 
-  <body class="bg-base-300 min-h-screen">
+  <body class="bg-[#0e1237] min-h-screen text-[#f3f4f6]">
     <!-- Navbar -->
-    <div class="navbar bg-base-100 shadow-lg px-4 mb-8">
+    <div class="navbar navbar-mustard shadow-xl px-4 sticky top-0 z-50">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl text-accent" href="index.html">2DOApp</a>
+        <a class="btn btn-ghost normal-case text-2xl font-black tracking-tighter text-[#0e1237]" href="index.html">HANDBOOK</a>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
+        <ul class="menu menu-horizontal px-1 font-bold">
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="blog.html">The Guide</a></li>
           <li><button onclick="signOutUser().then(() => window.location.href='login.html')" class="btn btn-ghost btn-sm mt-1">Logout</button></li>
         </ul>
       </div>
-
     </div>
 
-    <h1>Todo App</h1>
-    <div class="wrapper card bg-base-100 shadow-xl p-6 max-w-lg mx-auto">
-      <form class="form-control flex flex-row gap-2">
-        <input
-          id="todo-input"
-          type="text"
-          placeholder="Search & Input Note"
-          class="input input-bordered input-accent flex-grow rounded-full"
-          autocomplete="off"
-        />
-        <button id="add-button" class="btn btn-accent rounded-full px-8">ADD</button>
-      </form>
-       <ul id="todo-list"> 
-        <li class="todo">
-          <checking the to do and save -->
-              <path
-                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
-              />
-            </svg>
-          </button>
-        </li>
-        <li class="todo">
-              <path
-                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
-              />
-            </svg> 
-          </button>
-        </li>
-      </ul> 
-    </div>
-  </body>
+    <main class="relative pt-12 pb-24 px-4">
+      <!-- Welcome Header -->
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h1 class="text-6xl font-black text-[#ebd740] mb-4 tracking-tight">Your Daily Handbook</h1>
+        <p id="welcome-msg" class="text-xl text-white/70 italic">Organizing your world, one page at a time.</p>
+      </div>
+
+      <!-- Main Container -->
+      <div class="wrapper glass border-white/10 shadow-2xl rounded-[2.5rem] p-8 max-w-2xl mx-auto relative z-10">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold text-[#ebd740]">Active Tasks</h2>
+            <div id="date-display" class="text-white/50 font-medium"></div>
+        </div>
+
+        <form class="form-control flex flex-row gap-3 mb-10">
+          <input
+            id="todo-input"
+            type="text"
+            placeholder="Write into your handbook..."
+            class="input input-lg input-bordered bg-white/5 border-white/10 focus:border-[#ebd740] text-white flex-grow rounded-2xl transition-all"
+            autocomplete="off"
+          />
+          <button id="add-button" class="btn btn-lg bg-[#ebd740] border-none text-[#0e1237] hover:bg-[#d4c13a] rounded-2xl px-10 font-bold">ADD</button>
+        </form>
+
+        <ul id="todo-list" class="space-y-4">
+          <!-- Dynamically populated by app.js -->
+        </ul> 
+      </div>
+      
+      <!-- Decorative Background Elements -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ebd740]/5 rounded-full blur-[120px] -z-10"></div>
+    </main>
+
+    <script>
+      // Display current date
+      const dateDisplay = document.getElementById('date-display');
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      dateDisplay.innerText = new Date().toLocaleDateString('en-US', options);
+    </script>
+</body>
 </html>
+

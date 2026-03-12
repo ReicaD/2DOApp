@@ -1,10 +1,11 @@
 // Supabase Configuration
 const supabaseUrl = 'https://qjurthicrkwrbhnjxrlz.supabase.co';
-const supabaseKey = 'sb_publishable_NHxDtlqk6MVCK6nxVEmpdQ_Ld63yVlz'; // Note: This key looks different than expected, please double check in Supabase Settings -> API if code errors.
+const supabaseKey = 'sb_publishable_NHxDtlqk6MVCK6nxVEmpdQ_Ld63yVlz';
 
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-async function getTodosFromSupabase() {
+// Make functions globally available
+window.getTodosFromSupabase = async function() {
     const { data, error } = await _supabase
         .from('todos')
         .select('*')
@@ -15,9 +16,9 @@ async function getTodosFromSupabase() {
         return [];
     }
     return data;
-}
+};
 
-async function addTodoToSupabase(todoText) {
+window.addTodoToSupabase = async function(todoText) {
     const { data, error } = await _supabase
         .from('todos')
         .insert([{ text: todoText, completed: false }])
@@ -28,9 +29,9 @@ async function addTodoToSupabase(todoText) {
         return null;
     }
     return data[0];
-}
+};
 
-async function updateTodoInSupabase(id, completed) {
+window.updateTodoInSupabase = async function(id, completed) {
     const { error } = await _supabase
         .from('todos')
         .update({ completed: completed })
@@ -39,9 +40,9 @@ async function updateTodoInSupabase(id, completed) {
     if (error) {
         console.error('Error updating todo:', error);
     }
-}
+};
 
-async function deleteTodoFromSupabase(id) {
+window.deleteTodoFromSupabase = async function(id) {
     const { error } = await _supabase
         .from('todos')
         .delete()
@@ -50,33 +51,34 @@ async function deleteTodoFromSupabase(id) {
     if (error) {
         console.error('Error deleting todo:', error);
     }
-}
+};
 
-async function signUpUser(email, password) {
+window.signUpUser = async function(email, password) {
     const { data, error } = await _supabase.auth.signUp({
         email,
         password,
     });
     if (error) throw error;
     return data;
-}
+};
 
-async function signInUser(email, password) {
+window.signInUser = async function(email, password) {
     const { data, error } = await _supabase.auth.signInWithPassword({
         email,
         password,
     });
     if (error) throw error;
     return data;
-}
+};
 
-async function signOutUser() {
+window.signOutUser = async function() {
     const { error } = await _supabase.auth.signOut();
     if (error) console.error('Error signing out:', error);
-}
+};
 
-async function getCurrentUser() {
+window.getCurrentUser = async function() {
     const { data: { user } } = await _supabase.auth.getUser();
     return user;
-}
+};
+
 
