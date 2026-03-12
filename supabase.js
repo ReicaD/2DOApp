@@ -19,9 +19,15 @@ window.getTodosFromSupabase = async function() {
 };
 
 window.addTodoToSupabase = async function(todoText) {
+    const { data: { user } } = await _supabase.auth.getUser();
+    if (!user) {
+        console.error('User must be logged in to save to Supabase');
+        return null;
+    }
+
     const { data, error } = await _supabase
         .from('todos')
-        .insert([{ text: todoText, completed: false }])
+        .insert([{ text: todoText, completed: false, user_id: user.id }])
         .select();
     
     if (error) {
@@ -30,6 +36,7 @@ window.addTodoToSupabase = async function(todoText) {
     }
     return data[0];
 };
+
 
 window.updateTodoInSupabase = async function(id, completed) {
     const { error } = await _supabase

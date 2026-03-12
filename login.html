@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handbook Login</title>
+    <title>2doApp Login</title>
+
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,9 +12,8 @@
   <body class="bg-[#0e1237] min-h-screen text-[#f3f4f6]">
     <!-- Navbar -->
     <div class="navbar navbar-mustard shadow-xl px-4 sticky top-0 z-50">
-      <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-2xl font-black tracking-tighter" href="index.html">HANDBOOK</a>
-      </div>
+        <a class="btn btn-ghost normal-case text-2xl font-black tracking-tighter" href="index.html">2doApp</a>
+
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1 font-bold">
           <li><a href="index.html">Home</a></li>
@@ -26,8 +26,9 @@
     <main class="hero min-h-[80vh] px-4">
       <div class="hero-content flex-col lg:flex-row-reverse max-w-6xl">
         <div class="text-center lg:text-left lg:ml-12 border-l-4 border-[#ebd740] pl-8 py-4">
-          <h1 class="text-7xl font-black text-[#ebd740] tracking-tighter mb-4">Master Your Life.</h1>
-          <p class="text-2xl text-white/80 max-w-md font-light">Join thousands using the Handbook to organize their daily tasks and ambitions.</p>
+          <h1 class="text-7xl font-black text-[#ebd740] tracking-tighter mb-4">Master Your Day.</h1>
+          <p class="text-2xl text-white/80 max-w-md font-light">Join thousands using 2doApp to organize their daily tasks and ambitions.</p>
+
           <div class="mt-8 hidden lg:block">
             <img src="images/todo_app_hero_1773331366211.png" alt="Productivity" class="rounded-3xl shadow-2xl border border-white/10 w-full object-cover max-h-[300px]" />
           </div>
@@ -35,7 +36,8 @@
         
         <div class="card w-full max-w-md shadow-2xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem]">
           <div class="card-body p-10">
-            <h2 class="text-3xl font-bold text-center mb-6 text-[#ebd740]">Access Your Handbook</h2>
+            <h2 class="text-3xl font-bold text-center mb-6 text-[#ebd740]">Access Your 2doApp</h2>
+
             <div id="auth-error" class="alert alert-error hidden mb-6 rounded-2xl">
               <span id="error-message"></span>
             </div>
@@ -57,10 +59,15 @@
             <div class="form-control mt-10 space-y-4">
               <button id="login-btn" class="btn btn-lg bg-[#ebd740] border-none text-[#0e1237] hover:bg-[#d4c13a] rounded-2xl font-bold">Sign In</button>
               <div class="divider text-white/20">OR</div>
-              <button id="signup-btn" class="btn btn-lg btn-outline border-white/20 text-white hover:bg-white/5 rounded-2xl">Create New Handbook</button>
-              <div class="text-center mt-4">
-                <a href="index.html" class="link link-hover text-white/40 text-sm italic">← Continue using as Guest</a>
+              <button id="signup-btn" class="btn btn-lg btn-outline border-white/20 text-white hover:bg-white/5 rounded-2xl">Create New Account</button>
+
+              <div class="pt-4">
+                <a href="index.html" class="btn btn-lg btn-ghost w-full bg-[#ebd740] text-[#0e1237] hover:bg-[#d4c13a] rounded-2xl font-bold shadow-lg">
+                  Continue as Guest 
+                </a>
+                <p class="text-center text-white/40 text-sm mt-3 italic">No account needed to start</p>
               </div>
+
             </div>
 
           </div>

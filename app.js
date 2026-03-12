@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Update Navbar and Welcome Message
   if (currentUser) {
-    if (welcomeMsg) welcomeMsg.innerHTML = `Welcome back, <span class="text-[#ebd740] font-bold">${currentUser.email.split('@')[0]}</span>. Your life is waiting.`;
+    if (welcomeMsg) welcomeMsg.innerHTML = `Welcome back, <span class="text-[#ebd740] font-bold">${currentUser.email.split('@')[0]}</span>. Your 2doApp is ready.`;
+
     if (authLinks) authLinks.innerHTML = `
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="blog.html">The Guide</a></li>
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="blog.html">The Guide</a></li>
       <li><a href="login.html" class="btn btn-ghost btn-sm mt-1">Log In</a></li>
-      <li><a href="login.html" class="btn btn-accent btn-sm mt-1 text-[#0e1237]">Get Started</a></li>
+      <li><a href="login.html" class="btn btn-accent btn-sm mt-1 text-[#0e1237] font-bold">Get Started</a></li>
+
     `;
   }
 
