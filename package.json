@@ -1,0 +1,13 @@
+{
+  "name": "2doapp",
+  "version": "1.0.0",
+  "description": "A chic todo app with grocery advice blog.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx servor . index.html 8000 --browse",
+    "dev": "npx servor . index.html 8000 --browse"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

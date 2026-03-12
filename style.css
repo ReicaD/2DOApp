@@ -1,166 +1,74 @@
 :root {
-  --primary-color: #4c5a63; /* Replace with your primary color */
-  --secondary-color: #2ecc71; /* Replace with your secondary color */
-  --accent-color: #e8e804; /* Replace with your accent color */
-  --background-color: #0e1237; /* Replace with your background color */
-  --text-color: #333; /* Replace with your text color */
+  --primary-color: #4c5a63;
+  --secondary-color: #2ecc71;
+  --accent-color: #e8e804;
+  --background-color: #0e1237;
+  --text-color: #f3f4f6;
 }
+
+/* Base resets to blend with DaisyUI */
 * {
   margin: 0;
   padding: 0;
-}
-html {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16pt;
-  color: var(--text-color);
-}
-
-body {
-  min-height: 100vh;
-  padding: 10px;
-  background-color: #0e1237;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  margin-top: 100px; /* Top margin */
-  margin-bottom: 20px; /* Bottom margin */
-  font-size: 3rem;
-  font-weight: 800; /* Bold font */
-  text-transform: uppercase; /* Makes text uppercase */
-  text-align: center; /* Center-align the text */
-  color: var(--accent-color); /* Primary color */
-}
-
-.wrapper {
-  width: 90%;
-  max-width: 600px;
-  background: #0e1237;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-}
-
-#todo-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  font-family: inherit; /* Inherit the font from the parent */
-  font-size: 1rem;
-  border: 2px solid var(--secondary-color);
-  border-radius: 1000px;
-  background: #0e1237; /* No background */
-  color: #333;
-  caret-color: var(--accent-color); /* Custom caret color */
   box-sizing: border-box;
 }
 
-#todo-input:focus {
-  color: aliceblue;
-  outline: none;
-}
-form {
-  position: relative;
-}
-#add-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  background-color: var(--accent-color);
-  height: 100%;
-  padding: 0 30px;
-  border: none;
-  border-radius: 1000px;
-  font: inherit;
-  font-weight: 600;
-  color: var(--background);
-  cursor: pointer;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color) !important;
 }
 
-.todo {
-  margin: 10px;
-  padding: 0 16px;
-  background-color: var(--primary-color);
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
+/* Customizing DaisyUI with original colors */
+.btn-accent {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #000 !important;
 }
 
-.todo .todo-text {
-  padding: 15px;
-  color: rgb(233, 231, 150);
-  padding-right: 0;
-  flex-grow: 1;
-  transition: 200ms ease;
+.text-accent {
+  color: var(--accent-color) !important;
 }
 
-.delete-button {
-  padding: 3px;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+.input-accent {
+  border-color: var(--accent-color) !important;
 }
 
-.delete-button svg {
-  fill: rgb(4, 245, 32); /* initial color */
-  transition: fill 0.3s ease; /* animate the 'fill' property over 0.3 seconds */
+.checkbox-accent {
+  border-color: var(--accent-color) !important;
 }
 
-.delete-button:hover svg {
-  fill: #eb1f10; /* new color on hover */
-}
-.custom-checkbox {
-  border: 2px solid var(--accent-color);
-  border-radius: 50%;
-  min-height: 20px;
-  min-width: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0; /* Prevent shrinking */
-  cursor: pointer; /* Optional for clickable styling */
-  transition: 200ms ease;
-  cursor: pointer;
-}
-/* adds the checkmark color and sychcs it  to the button*/
-input[type="checkbox"]:checked ~ .custom-checkbox {
-  background-color: var(--accent-color);
+.checkbox-accent:checked {
+  background-color: var(--accent-color) !important;
+  color: #000 !important;
 }
 
-input[type="checkbox"]:checked ~ .custom-checkbox svg {
-  fill: var(--primary-color);
+h1 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--accent-color);
+  letter-spacing: 2px;
 }
 
-input[type="checkbox"]:checked ~ .todo-text {
-  text-decoration: line-through;
-  color: var(--secondary-color);
+.wrapper {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* hiding the original checkbox */
-
-input[type="checkbox"] {
-  display: none;
+#todo-list {
+  margin-top: 2rem;
 }
+
+/* Media query for mobile */
 @media (max-width: 500px) {
-  html {
-    font-size: 12pt;
-  }
-  #add-button {
-    position: unset;
-    width: 100%;
-    margin-top: 10px;
-    padding: 15px;
-    height: auto;
-  }
   h1 {
-    margin-top: 50px;
-    font-size: 15vw;
+    font-size: 12vw;
+    margin-top: 30px;
   }
 }
+

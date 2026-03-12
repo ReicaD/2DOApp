@@ -4,23 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2DOApp</title>
+    <title>2DOApp - Chic Productivity</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" ></script> 
+    <script src="app.js" defer></script> 
 </head>
 
-  <body>
-    <script src="app.js" ></script>
+  <body class="bg-base-300 min-h-screen">
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-lg px-4 mb-8">
+      <div class="flex-1">
+        <a class="btn btn-ghost normal-case text-xl text-accent" href="index.html">2DOApp</a>
+      </div>
+      <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+
     <h1>Todo App</h1>
-    <div class="wrapper">
-      <form>
+    <div class="wrapper card bg-base-100 shadow-xl p-6 max-w-lg mx-auto">
+      <form class="form-control flex flex-row gap-2">
         <input
           id="todo-input"
           type="text"
           placeholder="Search & Input Note"
+          class="input input-bordered input-accent flex-grow rounded-full"
           autocomplete="off"
         />
-        <button id="add-button">ADD</button>
+        <button id="add-button" class="btn btn-accent rounded-full px-8">ADD</button>
       </form>
        <ul id="todo-list"> 
         <li class="todo">

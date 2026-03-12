@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - 2DOApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-base-300 min-h-screen">
+    <!-- Navbar -->
+    <div class="navbar bg-base-100 shadow-lg px-4 mb-8">
+      <div class="flex-1">
+        <a class="btn btn-ghost normal-case text-xl text-accent" href="index.html">2DOApp</a>
+      </div>
+      <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero min-h-[70vh]">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="text-center lg:text-left ml-8">
+          <h1 class="text-5xl font-bold text-accent">Login now!</h1>
+          <p class="py-6 text-xl">Start creating your chic grocery lists and shopping plans. Organize your life with 2DOApp.</p>
+          <img src="images/todo_app_hero_1773331366211.png" alt="Productivity" class="max-w-md rounded-lg shadow-2xl hidden lg:block" />
+        </div>
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div class="card-body">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email</span>
+              </label>
+              <input type="text" placeholder="email" class="input input-bordered input-accent" />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Password</span>
+              </label>
+              <input type="text" placeholder="password" class="input input-bordered input-accent" />
+              <label class="label">
+                <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+              </label>
+            </div>
+            <div class="form-control mt-6">
+              <button class="btn btn-accent rounded-full">Login</button>
+            </div>
+            <div class="divider">OR</div>
+            <div class="form-control">
+              <button class="btn btn-outline btn-accent rounded-full">Create Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
