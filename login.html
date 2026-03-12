@@ -23,52 +23,84 @@
       </div>
     </div>
 
-    <div class="hero min-h-[70vh]">
+    <main class="hero min-h-[70vh]">
       <div class="hero-content flex-col lg:flex-row-reverse">
         <div class="text-center lg:text-left ml-8">
           <h1 class="text-5xl font-bold text-accent">Login now!</h1>
           <p class="py-6 text-xl">Start creating your chic grocery lists and shopping plans. Organize your life with 2DOApp.</p>
           <img src="images/todo_app_hero_1773331366211.png" alt="Productivity" class="max-w-md rounded-lg shadow-2xl hidden lg:block" />
         </div>
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-white">
           <div class="card-body">
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Email</span>
-              </label>
-              <input type="text" placeholder="email" class="input input-bordered input-accent" />
+            <div id="auth-error" class="alert alert-error hidden mb-4">
+              <span id="error-message"></span>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text">Password</span>
+                <span class="label-text text-[#0e1237]">Email</span>
               </label>
-              <input type="text" placeholder="password" class="input input-bordered input-accent" />
+              <input type="email" id="email" placeholder="email" class="input input-bordered input-accent bg-transparent text-[#0e1237]" required />
+            </div>
+            <div class="form-control">
               <label class="label">
-                <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+                <span class="label-text text-[#0e1237]">Password</span>
+              </label>
+              <input type="password" id="password" placeholder="password" class="input input-bordered input-accent bg-transparent text-[#0e1237]" required />
+              <label class="label">
+                <a href="#" class="label-text-alt link link-hover text-[#0e1237]">Forgot password?</a>
               </label>
             </div>
             <div class="form-control mt-6">
               <button id="login-btn" class="btn btn-accent rounded-full">Login</button>
             </div>
-            <div class="divider">OR</div>
+            <div class="divider text-[#0e1237]">OR</div>
             <div class="form-control">
               <button id="signup-btn" class="btn btn-outline btn-accent rounded-full">Create Account</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
+    <!-- Supabase and Auth Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
     <script>
-      document.getElementById('login-btn').addEventListener('click', () => {
-        alert('Logging in... (Supabase integration coming next!)');
-        window.location.href = 'index.html';
+      const loginBtn = document.getElementById('login-btn');
+      const signupBtn = document.getElementById('signup-btn');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const errorDiv = document.getElementById('auth-error');
+      const errorMessage = document.getElementById('error-message');
+
+      function showError(msg) {
+        errorMessage.innerText = msg;
+        errorDiv.classList.remove('hidden');
+      }
+
+      document.getElementById('login-btn').addEventListener('click', async () => {
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        try {
+            await signInUser(email, password);
+            window.location.href = 'index.html';
+        } catch (err) {
+            showError(err.message);
+        }
       });
-      document.getElementById('signup-btn').addEventListener('click', () => {
-        alert('Creating account... (Supabase integration coming next!)');
-        window.location.href = 'index.html';
+
+      document.getElementById('signup-btn').addEventListener('click', async () => {
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        try {
+            await signUpUser(email, password);
+            alert('Signup successful! Please check your email for verification if needed, or try logging in.');
+        } catch (err) {
+            showError(err.message);
+        }
       });
     </script>
 </body>
 </html>
+
 

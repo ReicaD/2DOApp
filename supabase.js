@@ -51,3 +51,32 @@ async function deleteTodoFromSupabase(id) {
         console.error('Error deleting todo:', error);
     }
 }
+
+async function signUpUser(email, password) {
+    const { data, error } = await _supabase.auth.signUp({
+        email,
+        password,
+    });
+    if (error) throw error;
+    return data;
+}
+
+async function signInUser(email, password) {
+    const { data, error } = await _supabase.auth.signInWithPassword({
+        email,
+        password,
+    });
+    if (error) throw error;
+    return data;
+}
+
+async function signOutUser() {
+    const { error } = await _supabase.auth.signOut();
+    if (error) console.error('Error signing out:', error);
+}
+
+async function getCurrentUser() {
+    const { data: { user } } = await _supabase.auth.getUser();
+    return user;
+}
+

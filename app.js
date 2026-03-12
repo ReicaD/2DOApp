@@ -3,10 +3,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   const todoInput = document.getElementById("todo-input");
   const todoListUL = document.getElementById("todo-list");
 
+  // Auth Check
+  const user = await getCurrentUser();
+  if (!user) {
+    window.location.href = 'login.html';
+    return;
+  }
+
   let allTodos = [];
   
   // Initialize from Supabase
   await loadAndDisplayTodos();
+
 
   todoForm.addEventListener("submit", async function (e) {
     e.preventDefault(); 
