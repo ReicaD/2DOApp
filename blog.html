@@ -15,12 +15,13 @@
         <a class="btn btn-ghost normal-case text-2xl font-black tracking-tighter text-[#0e1237]" href="index.html">HANDBOOK</a>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 font-bold">
+        <ul id="auth-links" class="menu menu-horizontal px-1 font-bold text-[#0e1237]">
           <li><a href="index.html">Home</a></li>
           <li><a href="blog.html" class="active">The Guide</a></li>
-          <li><button onclick="signOutUser().then(() => window.location.href='login.html')" class="btn btn-ghost btn-sm mt-1">Logout</button></li>
+          <li><a href="login.html" class="btn btn-ghost btn-sm mt-1">Log In</a></li>
         </ul>
       </div>
+
     </div>
 
 
@@ -97,5 +98,26 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
+    <script>
+      async function updateNavbar() {
+        const authLinks = document.getElementById("auth-links");
+        const currentUser = await getCurrentUser();
+        if (currentUser) {
+          authLinks.innerHTML = `
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html" class="active">The Guide</a></li>
+            <li><button onclick="signOutUser().then(() => window.location.reload())" class="btn btn-ghost btn-sm mt-1">Logout</button></li>
+          `;
+        } else {
+          authLinks.innerHTML = `
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html" class="active">The Guide</a></li>
+            <li><a href="login.html" class="btn btn-ghost btn-sm mt-1 text-[#0e1237]">Log In</a></li>
+            <li><a href="login.html" class="btn btn-accent btn-sm mt-1 text-[#0e1237]">Get Started</a></li>
+          `;
+        }
+      }
+      updateNavbar();
+    </script>
 </body>
 </html>

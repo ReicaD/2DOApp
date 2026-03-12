@@ -20,12 +20,11 @@
         <a class="btn btn-ghost normal-case text-2xl font-black tracking-tighter text-[#0e1237]" href="index.html">HANDBOOK</a>
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 font-bold">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="blog.html">The Guide</a></li>
-          <li><button onclick="signOutUser().then(() => window.location.href='login.html')" class="btn btn-ghost btn-sm mt-1">Logout</button></li>
+        <ul id="auth-links" class="menu menu-horizontal px-1 font-bold">
+          <!-- Populated by app.js -->
         </ul>
       </div>
+
     </div>
 
     <main class="relative pt-12 pb-24 px-4">

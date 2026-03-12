@@ -3,38 +3,55 @@ document.addEventListener("DOMContentLoaded", async function () {
   const todoInput = document.getElementById("todo-input");
   const todoListUL = document.getElementById("todo-list");
   const welcomeMsg = document.getElementById("welcome-msg");
+  const authLinks = document.getElementById("auth-links");
 
-  // Auth Check
-  const user = await getCurrentUser();
-  if (!user) {
-    window.location.href = 'login.html';
-    return;
-  }
-
-  // Update Welcome Message
-  if (user && user.email) {
-    welcomeMsg.innerHTML = `Welcome back, <span class="text-[#ebd740] font-bold">${user.email.split('@')[0]}</span>. Your life is waiting.`;
-  }
-
+  let currentUser = await getCurrentUser();
   let allTodos = [];
-  
-  // Initialize from Supabase
+
+  // Update Navbar and Welcome Message
+  if (currentUser) {
+    if (welcomeMsg) welcomeMsg.innerHTML = `Welcome back, <span class="text-[#ebd740] font-bold">${currentUser.email.split('@')[0]}</span>. Your life is waiting.`;
+    if (authLinks) authLinks.innerHTML = `
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="blog.html">The Guide</a></li>
+      <li><button onclick="signOutUser().then(() => window.location.reload())" class="btn btn-ghost btn-sm mt-1">Logout</button></li>
+    `;
+  } else {
+    if (welcomeMsg) welcomeMsg.innerHTML = `Organizing your world, <span class="text-[#ebd740] font-bold">Guest</span>. <a href="login.html" class="link link-accent font-bold">Sign in</a> to save to the cloud.`;
+    if (authLinks) authLinks.innerHTML = `
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="blog.html">The Guide</a></li>
+      <li><a href="login.html" class="btn btn-ghost btn-sm mt-1">Log In</a></li>
+      <li><a href="login.html" class="btn btn-accent btn-sm mt-1 text-[#0e1237]">Get Started</a></li>
+    `;
+  }
+
+  // Initialize display
   await loadAndDisplayTodos();
 
   todoForm.addEventListener("submit", async function (e) {
     e.preventDefault(); 
     const todoText = todoInput.value.trim();
     if (todoText.length > 0) {
-      const newTodo = await addTodoToSupabase(todoText);
-      if (newTodo) {
-        todoInput.value = "";
-        await loadAndDisplayTodos();
+      if (currentUser) {
+        await addTodoToSupabase(todoText);
+      } else {
+        const guestTodos = JSON.parse(localStorage.getItem('guest_todos') || '[]');
+        guestTodos.push({ id: Date.now(), text: todoText, completed: false });
+        localStorage.setItem('guest_todos', JSON.stringify(guestTodos));
       }
+      todoInput.value = "";
+      await loadAndDisplayTodos();
     }
   });
 
   async function loadAndDisplayTodos() {
-    allTodos = await getTodosFromSupabase();
+    if (currentUser) {
+      allTodos = await getTodosFromSupabase();
+    } else {
+      allTodos = JSON.parse(localStorage.getItem('guest_todos') || '[]');
+    }
+    
     todoListUL.innerHTML = "";
     allTodos.forEach((todo) => {
       let todoItem = createTodoItem(todo); 
@@ -66,14 +83,28 @@ document.addEventListener("DOMContentLoaded", async function () {
     deleteButton.addEventListener("click", async () => {
       todoLI.classList.add('opacity-0', 'scale-95');
       setTimeout(async () => {
-        await deleteTodoFromSupabase(todo.id);
+        if (currentUser) {
+          await deleteTodoFromSupabase(todo.id);
+        } else {
+          let guestTodos = JSON.parse(localStorage.getItem('guest_todos') || '[]');
+          guestTodos = guestTodos.filter(t => t.id !== todo.id);
+          localStorage.setItem('guest_todos', JSON.stringify(guestTodos));
+        }
         await loadAndDisplayTodos();
       }, 200);
     });
 
     const checkbox = todoLI.querySelector("input");
     checkbox.addEventListener("change", async () => {
-       await updateTodoInSupabase(todo.id, checkbox.checked);
+       if (currentUser) {
+         await updateTodoInSupabase(todo.id, checkbox.checked);
+       } else {
+         let guestTodos = JSON.parse(localStorage.getItem('guest_todos') || '[]');
+         const target = guestTodos.find(t => t.id === todo.id);
+         if (target) target.completed = checkbox.checked;
+         localStorage.setItem('guest_todos', JSON.stringify(guestTodos));
+       }
+       
        const label = todoLI.querySelector(".todo-text");
        if (checkbox.checked) {
            label.classList.add('line-through', 'text-white/30', 'italic');
@@ -87,4 +118,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     return todoLI;
   }
 });
+
 
